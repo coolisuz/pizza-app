@@ -4,7 +4,7 @@ function MenuItem({ pizza }) {
   const { id, name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
 
   return (
-    <li>
+    <li className="text-stone-800">
       <img src={imageUrl} alt={name} />
       <div>
         <p>{name}</p>
