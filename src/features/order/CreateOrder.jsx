@@ -8,7 +8,7 @@ import {
 import { createOrder } from "../../services/apiRestaurant";
 import Button from "../../ui/Button";
 import { useSelector } from "react-redux";
-import { clearCart, getCart } from "../cart/cartSlice";
+import { clearCart, getCart, getCartTotalPrice } from "../cart/cartSlice";
 import EmptyCart from '../cart/EmptyCart'
 import store from '../../store'
 import { formatCurrency } from "../../utilities/helpers";
@@ -27,7 +27,7 @@ function CreateOrder() {
 
   const [withPriority, setWithPriority] = useState(false);
   const cart = useSelector(getCart);
-  const totalPrice = cart.reduce((acc, curVal) => curVal.total + acc, 0);
+  const totalPrice = useSelector(getCartTotalPrice)
   const priorityPrice = withPriority ? totalPrice * 0.2 : 0;
 
 
@@ -97,7 +97,7 @@ export async function action({ request }) {
   const order = {
     ...data,
     cart: JSON.parse(data.cart),
-    priority: data.priority === "on",
+    priority: data.priority === "true",
   };
 
   const errors = {};
