@@ -4,7 +4,7 @@ import { formatCurrency } from "../../utilities/helpers";
 
 function CartOverview() {
   const cart = useSelector(state => state.cart.cart);
-  const totalPrice = cart.reduce((acc, cur) => acc + cur.total, 0);
+  const totalPrice = cart.reduce((acc, cur) => acc + cur.totalPrice, 0);
   const totalQty = cart.reduce((acc, cur) => acc + cur.quantity, 0);
 
   if (!totalQty) return null;
