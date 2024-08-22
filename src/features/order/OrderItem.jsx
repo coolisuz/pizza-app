@@ -1,4 +1,3 @@
-// import { formatCurrency } from "../../utils/helpers";
 import { formatCurrency } from "../../utilities/helpers";
 
 function OrderItem({ item, isLoadingIngredients, ingredients }) {
